@@ -1,4 +1,4 @@
-hoolai-web-gateway
+node-thrift-gateway
 ===============
 
-官网所有服务网关
+Node Thrift 服务网关
