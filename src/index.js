@@ -1,15 +1,10 @@
 import 'babel-polyfill'
 import Koa from 'koa'
 import chalk from 'chalk'
-import {
-  resolve
-} from 'path'
+import {resolve} from 'path'
 import R from 'ramda'
 
-import {
-  host,
-  port
-} from './config'
+import {host, port} from './config'
 import InitData from './init/init-data'
 
 const app = new Koa()
