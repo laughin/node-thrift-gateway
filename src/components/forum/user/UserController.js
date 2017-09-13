@@ -1,5 +1,5 @@
-import systemCode from './../../../../codes/system'
-import UserService from './userService'
+import systemCode from './../../../codes/system'
+import UserService from './UserService'
 
 class UserController {
 

@@ -13,16 +13,16 @@ var Q = thrift.Q;
 var ttypes = require('./userService_types');
 //HELPER FUNCTIONS AND STRUCTURES
 
-var UserService_add_args = function(args) {
-  this.arg0 = null;
+var TUserService_add_args = function(args) {
+  this.user = null;
   if (args) {
-    if (args.arg0 !== undefined && args.arg0 !== null) {
-      this.arg0 = new ttypes.User(args.arg0);
+    if (args.user !== undefined && args.user !== null) {
+      this.user = new ttypes.TUser(args.user);
     }
   }
 };
-UserService_add_args.prototype = {};
-UserService_add_args.prototype.read = function(input) {
+TUserService_add_args.prototype = {};
+TUserService_add_args.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -37,8 +37,8 @@ UserService_add_args.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.arg0 = new ttypes.User();
-        this.arg0.read(input);
+        this.user = new ttypes.TUser();
+        this.user.read(input);
       } else {
         input.skip(ftype);
       }
@@ -55,11 +55,11 @@ UserService_add_args.prototype.read = function(input) {
   return;
 };
 
-UserService_add_args.prototype.write = function(output) {
-  output.writeStructBegin('UserService_add_args');
-  if (this.arg0 !== null && this.arg0 !== undefined) {
-    output.writeFieldBegin('arg0', Thrift.Type.STRUCT, 1);
-    this.arg0.write(output);
+TUserService_add_args.prototype.write = function(output) {
+  output.writeStructBegin('TUserService_add_args');
+  if (this.user !== null && this.user !== undefined) {
+    output.writeFieldBegin('user', Thrift.Type.STRUCT, 1);
+    this.user.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -67,7 +67,7 @@ UserService_add_args.prototype.write = function(output) {
   return;
 };
 
-var UserService_add_result = function(args) {
+var TUserService_add_result = function(args) {
   this.success = null;
   if (args) {
     if (args.success !== undefined && args.success !== null) {
@@ -75,8 +75,8 @@ var UserService_add_result = function(args) {
     }
   }
 };
-UserService_add_result.prototype = {};
-UserService_add_result.prototype.read = function(input) {
+TUserService_add_result.prototype = {};
+TUserService_add_result.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -90,8 +90,8 @@ UserService_add_result.prototype.read = function(input) {
     switch (fid)
     {
       case 0:
-      if (ftype == Thrift.Type.BOOL) {
-        this.success = input.readBool();
+      if (ftype == Thrift.Type.I32) {
+        this.success = input.readI32();
       } else {
         input.skip(ftype);
       }
@@ -108,11 +108,11 @@ UserService_add_result.prototype.read = function(input) {
   return;
 };
 
-UserService_add_result.prototype.write = function(output) {
-  output.writeStructBegin('UserService_add_result');
+TUserService_add_result.prototype.write = function(output) {
+  output.writeStructBegin('TUserService_add_result');
   if (this.success !== null && this.success !== undefined) {
-    output.writeFieldBegin('success', Thrift.Type.BOOL, 0);
-    output.writeBool(this.success);
+    output.writeFieldBegin('success', Thrift.Type.I32, 0);
+    output.writeI32(this.success);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -120,16 +120,16 @@ UserService_add_result.prototype.write = function(output) {
   return;
 };
 
-var UserService_get_args = function(args) {
-  this.arg0 = null;
+var TUserService_get_args = function(args) {
+  this.userId = null;
   if (args) {
-    if (args.arg0 !== undefined && args.arg0 !== null) {
-      this.arg0 = args.arg0;
+    if (args.userId !== undefined && args.userId !== null) {
+      this.userId = args.userId;
     }
   }
 };
-UserService_get_args.prototype = {};
-UserService_get_args.prototype.read = function(input) {
+TUserService_get_args.prototype = {};
+TUserService_get_args.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -144,7 +144,7 @@ UserService_get_args.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.I32) {
-        this.arg0 = input.readI32();
+        this.userId = input.readI32();
       } else {
         input.skip(ftype);
       }
@@ -161,11 +161,11 @@ UserService_get_args.prototype.read = function(input) {
   return;
 };
 
-UserService_get_args.prototype.write = function(output) {
-  output.writeStructBegin('UserService_get_args');
-  if (this.arg0 !== null && this.arg0 !== undefined) {
-    output.writeFieldBegin('arg0', Thrift.Type.I32, 1);
-    output.writeI32(this.arg0);
+TUserService_get_args.prototype.write = function(output) {
+  output.writeStructBegin('TUserService_get_args');
+  if (this.userId !== null && this.userId !== undefined) {
+    output.writeFieldBegin('userId', Thrift.Type.I32, 1);
+    output.writeI32(this.userId);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -173,16 +173,16 @@ UserService_get_args.prototype.write = function(output) {
   return;
 };
 
-var UserService_get_result = function(args) {
+var TUserService_get_result = function(args) {
   this.success = null;
   if (args) {
     if (args.success !== undefined && args.success !== null) {
-      this.success = new ttypes.User(args.success);
+      this.success = new ttypes.TUser(args.success);
     }
   }
 };
-UserService_get_result.prototype = {};
-UserService_get_result.prototype.read = function(input) {
+TUserService_get_result.prototype = {};
+TUserService_get_result.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -197,7 +197,7 @@ UserService_get_result.prototype.read = function(input) {
     {
       case 0:
       if (ftype == Thrift.Type.STRUCT) {
-        this.success = new ttypes.User();
+        this.success = new ttypes.TUser();
         this.success.read(input);
       } else {
         input.skip(ftype);
@@ -215,8 +215,8 @@ UserService_get_result.prototype.read = function(input) {
   return;
 };
 
-UserService_get_result.prototype.write = function(output) {
-  output.writeStructBegin('UserService_get_result');
+TUserService_get_result.prototype.write = function(output) {
+  output.writeStructBegin('TUserService_get_result');
   if (this.success !== null && this.success !== undefined) {
     output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
     this.success.write(output);
@@ -227,16 +227,16 @@ UserService_get_result.prototype.write = function(output) {
   return;
 };
 
-var UserService_remove_args = function(args) {
-  this.arg0 = null;
+var TUserService_remove_args = function(args) {
+  this.userId = null;
   if (args) {
-    if (args.arg0 !== undefined && args.arg0 !== null) {
-      this.arg0 = args.arg0;
+    if (args.userId !== undefined && args.userId !== null) {
+      this.userId = args.userId;
     }
   }
 };
-UserService_remove_args.prototype = {};
-UserService_remove_args.prototype.read = function(input) {
+TUserService_remove_args.prototype = {};
+TUserService_remove_args.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -251,7 +251,7 @@ UserService_remove_args.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.I32) {
-        this.arg0 = input.readI32();
+        this.userId = input.readI32();
       } else {
         input.skip(ftype);
       }
@@ -268,11 +268,11 @@ UserService_remove_args.prototype.read = function(input) {
   return;
 };
 
-UserService_remove_args.prototype.write = function(output) {
-  output.writeStructBegin('UserService_remove_args');
-  if (this.arg0 !== null && this.arg0 !== undefined) {
-    output.writeFieldBegin('arg0', Thrift.Type.I32, 1);
-    output.writeI32(this.arg0);
+TUserService_remove_args.prototype.write = function(output) {
+  output.writeStructBegin('TUserService_remove_args');
+  if (this.userId !== null && this.userId !== undefined) {
+    output.writeFieldBegin('userId', Thrift.Type.I32, 1);
+    output.writeI32(this.userId);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -280,7 +280,7 @@ UserService_remove_args.prototype.write = function(output) {
   return;
 };
 
-var UserService_remove_result = function(args) {
+var TUserService_remove_result = function(args) {
   this.success = null;
   if (args) {
     if (args.success !== undefined && args.success !== null) {
@@ -288,8 +288,8 @@ var UserService_remove_result = function(args) {
     }
   }
 };
-UserService_remove_result.prototype = {};
-UserService_remove_result.prototype.read = function(input) {
+TUserService_remove_result.prototype = {};
+TUserService_remove_result.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -303,8 +303,8 @@ UserService_remove_result.prototype.read = function(input) {
     switch (fid)
     {
       case 0:
-      if (ftype == Thrift.Type.BOOL) {
-        this.success = input.readBool();
+      if (ftype == Thrift.Type.I32) {
+        this.success = input.readI32();
       } else {
         input.skip(ftype);
       }
@@ -321,11 +321,11 @@ UserService_remove_result.prototype.read = function(input) {
   return;
 };
 
-UserService_remove_result.prototype.write = function(output) {
-  output.writeStructBegin('UserService_remove_result');
+TUserService_remove_result.prototype.write = function(output) {
+  output.writeStructBegin('TUserService_remove_result');
   if (this.success !== null && this.success !== undefined) {
-    output.writeFieldBegin('success', Thrift.Type.BOOL, 0);
-    output.writeBool(this.success);
+    output.writeFieldBegin('success', Thrift.Type.I32, 0);
+    output.writeI32(this.success);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -333,16 +333,16 @@ UserService_remove_result.prototype.write = function(output) {
   return;
 };
 
-var UserService_update_args = function(args) {
-  this.arg0 = null;
+var TUserService_update_args = function(args) {
+  this.user = null;
   if (args) {
-    if (args.arg0 !== undefined && args.arg0 !== null) {
-      this.arg0 = new ttypes.User(args.arg0);
+    if (args.user !== undefined && args.user !== null) {
+      this.user = new ttypes.TUser(args.user);
     }
   }
 };
-UserService_update_args.prototype = {};
-UserService_update_args.prototype.read = function(input) {
+TUserService_update_args.prototype = {};
+TUserService_update_args.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -357,8 +357,8 @@ UserService_update_args.prototype.read = function(input) {
     {
       case 1:
       if (ftype == Thrift.Type.STRUCT) {
-        this.arg0 = new ttypes.User();
-        this.arg0.read(input);
+        this.user = new ttypes.TUser();
+        this.user.read(input);
       } else {
         input.skip(ftype);
       }
@@ -375,11 +375,11 @@ UserService_update_args.prototype.read = function(input) {
   return;
 };
 
-UserService_update_args.prototype.write = function(output) {
-  output.writeStructBegin('UserService_update_args');
-  if (this.arg0 !== null && this.arg0 !== undefined) {
-    output.writeFieldBegin('arg0', Thrift.Type.STRUCT, 1);
-    this.arg0.write(output);
+TUserService_update_args.prototype.write = function(output) {
+  output.writeStructBegin('TUserService_update_args');
+  if (this.user !== null && this.user !== undefined) {
+    output.writeFieldBegin('user', Thrift.Type.STRUCT, 1);
+    this.user.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -387,7 +387,7 @@ UserService_update_args.prototype.write = function(output) {
   return;
 };
 
-var UserService_update_result = function(args) {
+var TUserService_update_result = function(args) {
   this.success = null;
   if (args) {
     if (args.success !== undefined && args.success !== null) {
@@ -395,8 +395,8 @@ var UserService_update_result = function(args) {
     }
   }
 };
-UserService_update_result.prototype = {};
-UserService_update_result.prototype.read = function(input) {
+TUserService_update_result.prototype = {};
+TUserService_update_result.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -410,8 +410,8 @@ UserService_update_result.prototype.read = function(input) {
     switch (fid)
     {
       case 0:
-      if (ftype == Thrift.Type.BOOL) {
-        this.success = input.readBool();
+      if (ftype == Thrift.Type.I32) {
+        this.success = input.readI32();
       } else {
         input.skip(ftype);
       }
@@ -428,11 +428,11 @@ UserService_update_result.prototype.read = function(input) {
   return;
 };
 
-UserService_update_result.prototype.write = function(output) {
-  output.writeStructBegin('UserService_update_result');
+TUserService_update_result.prototype.write = function(output) {
+  output.writeStructBegin('TUserService_update_result');
   if (this.success !== null && this.success !== undefined) {
-    output.writeFieldBegin('success', Thrift.Type.BOOL, 0);
-    output.writeBool(this.success);
+    output.writeFieldBegin('success', Thrift.Type.I32, 0);
+    output.writeI32(this.success);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -440,10 +440,10 @@ UserService_update_result.prototype.write = function(output) {
   return;
 };
 
-var UserService_users_args = function(args) {
+var TUserService_users_args = function(args) {
 };
-UserService_users_args.prototype = {};
-UserService_users_args.prototype.read = function(input) {
+TUserService_users_args.prototype = {};
+TUserService_users_args.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -461,23 +461,23 @@ UserService_users_args.prototype.read = function(input) {
   return;
 };
 
-UserService_users_args.prototype.write = function(output) {
-  output.writeStructBegin('UserService_users_args');
+TUserService_users_args.prototype.write = function(output) {
+  output.writeStructBegin('TUserService_users_args');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
-var UserService_users_result = function(args) {
+var TUserService_users_result = function(args) {
   this.success = null;
   if (args) {
     if (args.success !== undefined && args.success !== null) {
-      this.success = Thrift.copyList(args.success, [ttypes.User]);
+      this.success = Thrift.copyList(args.success, [ttypes.TUser]);
     }
   }
 };
-UserService_users_result.prototype = {};
-UserService_users_result.prototype.read = function(input) {
+TUserService_users_result.prototype = {};
+TUserService_users_result.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -502,7 +502,7 @@ UserService_users_result.prototype.read = function(input) {
         for (var _i5 = 0; _i5 < _size0; ++_i5)
         {
           var elem6 = null;
-          elem6 = new ttypes.User();
+          elem6 = new ttypes.TUser();
           elem6.read(input);
           this.success.push(elem6);
         }
@@ -523,8 +523,8 @@ UserService_users_result.prototype.read = function(input) {
   return;
 };
 
-UserService_users_result.prototype.write = function(output) {
-  output.writeStructBegin('UserService_users_result');
+TUserService_users_result.prototype.write = function(output) {
+  output.writeStructBegin('TUserService_users_result');
   if (this.success !== null && this.success !== undefined) {
     output.writeFieldBegin('success', Thrift.Type.LIST, 0);
     output.writeListBegin(Thrift.Type.STRUCT, this.success.length);
@@ -544,16 +544,16 @@ UserService_users_result.prototype.write = function(output) {
   return;
 };
 
-var UserServiceClient = exports.Client = function(output, pClass) {
+var TUserServiceClient = exports.Client = function(output, pClass) {
     this.output = output;
     this.pClass = pClass;
     this._seqid = 0;
     this._reqs = {};
 };
-UserServiceClient.prototype = {};
-UserServiceClient.prototype.seqid = function() { return this._seqid; };
-UserServiceClient.prototype.new_seqid = function() { return this._seqid += 1; };
-UserServiceClient.prototype.add = function(arg0, callback) {
+TUserServiceClient.prototype = {};
+TUserServiceClient.prototype.seqid = function() { return this._seqid; };
+TUserServiceClient.prototype.new_seqid = function() { return this._seqid += 1; };
+TUserServiceClient.prototype.add = function(user, callback) {
   this._seqid = this.new_seqid();
   if (callback === undefined) {
     var _defer = Q.defer();
@@ -564,25 +564,25 @@ UserServiceClient.prototype.add = function(arg0, callback) {
         _defer.resolve(result);
       }
     };
-    this.send_add(arg0);
+    this.send_add(user);
     return _defer.promise;
   } else {
     this._reqs[this.seqid()] = callback;
-    this.send_add(arg0);
+    this.send_add(user);
   }
 };
 
-UserServiceClient.prototype.send_add = function(arg0) {
+TUserServiceClient.prototype.send_add = function(user) {
   var output = new this.pClass(this.output);
   output.writeMessageBegin('add', Thrift.MessageType.CALL, this.seqid());
-  var args = new UserService_add_args();
-  args.arg0 = arg0;
+  var args = new TUserService_add_args();
+  args.user = user;
   args.write(output);
   output.writeMessageEnd();
   return this.output.flush();
 };
 
-UserServiceClient.prototype.recv_add = function(input,mtype,rseqid) {
+TUserServiceClient.prototype.recv_add = function(input,mtype,rseqid) {
   var callback = this._reqs[rseqid] || function() {};
   delete this._reqs[rseqid];
   if (mtype == Thrift.MessageType.EXCEPTION) {
@@ -591,7 +591,7 @@ UserServiceClient.prototype.recv_add = function(input,mtype,rseqid) {
     input.readMessageEnd();
     return callback(x);
   }
-  var result = new UserService_add_result();
+  var result = new TUserService_add_result();
   result.read(input);
   input.readMessageEnd();
 
@@ -600,7 +600,7 @@ UserServiceClient.prototype.recv_add = function(input,mtype,rseqid) {
   }
   return callback('add failed: unknown result');
 };
-UserServiceClient.prototype.get = function(arg0, callback) {
+TUserServiceClient.prototype.get = function(userId, callback) {
   this._seqid = this.new_seqid();
   if (callback === undefined) {
     var _defer = Q.defer();
@@ -611,25 +611,25 @@ UserServiceClient.prototype.get = function(arg0, callback) {
         _defer.resolve(result);
       }
     };
-    this.send_get(arg0);
+    this.send_get(userId);
     return _defer.promise;
   } else {
     this._reqs[this.seqid()] = callback;
-    this.send_get(arg0);
+    this.send_get(userId);
   }
 };
 
-UserServiceClient.prototype.send_get = function(arg0) {
+TUserServiceClient.prototype.send_get = function(userId) {
   var output = new this.pClass(this.output);
   output.writeMessageBegin('get', Thrift.MessageType.CALL, this.seqid());
-  var args = new UserService_get_args();
-  args.arg0 = arg0;
+  var args = new TUserService_get_args();
+  args.userId = userId;
   args.write(output);
   output.writeMessageEnd();
   return this.output.flush();
 };
 
-UserServiceClient.prototype.recv_get = function(input,mtype,rseqid) {
+TUserServiceClient.prototype.recv_get = function(input,mtype,rseqid) {
   var callback = this._reqs[rseqid] || function() {};
   delete this._reqs[rseqid];
   if (mtype == Thrift.MessageType.EXCEPTION) {
@@ -638,7 +638,7 @@ UserServiceClient.prototype.recv_get = function(input,mtype,rseqid) {
     input.readMessageEnd();
     return callback(x);
   }
-  var result = new UserService_get_result();
+  var result = new TUserService_get_result();
   result.read(input);
   input.readMessageEnd();
 
@@ -647,7 +647,7 @@ UserServiceClient.prototype.recv_get = function(input,mtype,rseqid) {
   }
   return callback('get failed: unknown result');
 };
-UserServiceClient.prototype.remove = function(arg0, callback) {
+TUserServiceClient.prototype.remove = function(userId, callback) {
   this._seqid = this.new_seqid();
   if (callback === undefined) {
     var _defer = Q.defer();
@@ -658,25 +658,25 @@ UserServiceClient.prototype.remove = function(arg0, callback) {
         _defer.resolve(result);
       }
     };
-    this.send_remove(arg0);
+    this.send_remove(userId);
     return _defer.promise;
   } else {
     this._reqs[this.seqid()] = callback;
-    this.send_remove(arg0);
+    this.send_remove(userId);
   }
 };
 
-UserServiceClient.prototype.send_remove = function(arg0) {
+TUserServiceClient.prototype.send_remove = function(userId) {
   var output = new this.pClass(this.output);
   output.writeMessageBegin('remove', Thrift.MessageType.CALL, this.seqid());
-  var args = new UserService_remove_args();
-  args.arg0 = arg0;
+  var args = new TUserService_remove_args();
+  args.userId = userId;
   args.write(output);
   output.writeMessageEnd();
   return this.output.flush();
 };
 
-UserServiceClient.prototype.recv_remove = function(input,mtype,rseqid) {
+TUserServiceClient.prototype.recv_remove = function(input,mtype,rseqid) {
   var callback = this._reqs[rseqid] || function() {};
   delete this._reqs[rseqid];
   if (mtype == Thrift.MessageType.EXCEPTION) {
@@ -685,7 +685,7 @@ UserServiceClient.prototype.recv_remove = function(input,mtype,rseqid) {
     input.readMessageEnd();
     return callback(x);
   }
-  var result = new UserService_remove_result();
+  var result = new TUserService_remove_result();
   result.read(input);
   input.readMessageEnd();
 
@@ -694,7 +694,7 @@ UserServiceClient.prototype.recv_remove = function(input,mtype,rseqid) {
   }
   return callback('remove failed: unknown result');
 };
-UserServiceClient.prototype.update = function(arg0, callback) {
+TUserServiceClient.prototype.update = function(user, callback) {
   this._seqid = this.new_seqid();
   if (callback === undefined) {
     var _defer = Q.defer();
@@ -705,25 +705,25 @@ UserServiceClient.prototype.update = function(arg0, callback) {
         _defer.resolve(result);
       }
     };
-    this.send_update(arg0);
+    this.send_update(user);
     return _defer.promise;
   } else {
     this._reqs[this.seqid()] = callback;
-    this.send_update(arg0);
+    this.send_update(user);
   }
 };
 
-UserServiceClient.prototype.send_update = function(arg0) {
+TUserServiceClient.prototype.send_update = function(user) {
   var output = new this.pClass(this.output);
   output.writeMessageBegin('update', Thrift.MessageType.CALL, this.seqid());
-  var args = new UserService_update_args();
-  args.arg0 = arg0;
+  var args = new TUserService_update_args();
+  args.user = user;
   args.write(output);
   output.writeMessageEnd();
   return this.output.flush();
 };
 
-UserServiceClient.prototype.recv_update = function(input,mtype,rseqid) {
+TUserServiceClient.prototype.recv_update = function(input,mtype,rseqid) {
   var callback = this._reqs[rseqid] || function() {};
   delete this._reqs[rseqid];
   if (mtype == Thrift.MessageType.EXCEPTION) {
@@ -732,7 +732,7 @@ UserServiceClient.prototype.recv_update = function(input,mtype,rseqid) {
     input.readMessageEnd();
     return callback(x);
   }
-  var result = new UserService_update_result();
+  var result = new TUserService_update_result();
   result.read(input);
   input.readMessageEnd();
 
@@ -741,7 +741,7 @@ UserServiceClient.prototype.recv_update = function(input,mtype,rseqid) {
   }
   return callback('update failed: unknown result');
 };
-UserServiceClient.prototype.users = function(callback) {
+TUserServiceClient.prototype.users = function(callback) {
   this._seqid = this.new_seqid();
   if (callback === undefined) {
     var _defer = Q.defer();
@@ -760,16 +760,16 @@ UserServiceClient.prototype.users = function(callback) {
   }
 };
 
-UserServiceClient.prototype.send_users = function() {
+TUserServiceClient.prototype.send_users = function() {
   var output = new this.pClass(this.output);
   output.writeMessageBegin('users', Thrift.MessageType.CALL, this.seqid());
-  var args = new UserService_users_args();
+  var args = new TUserService_users_args();
   args.write(output);
   output.writeMessageEnd();
   return this.output.flush();
 };
 
-UserServiceClient.prototype.recv_users = function(input,mtype,rseqid) {
+TUserServiceClient.prototype.recv_users = function(input,mtype,rseqid) {
   var callback = this._reqs[rseqid] || function() {};
   delete this._reqs[rseqid];
   if (mtype == Thrift.MessageType.EXCEPTION) {
@@ -778,7 +778,7 @@ UserServiceClient.prototype.recv_users = function(input,mtype,rseqid) {
     input.readMessageEnd();
     return callback(x);
   }
-  var result = new UserService_users_result();
+  var result = new TUserService_users_result();
   result.read(input);
   input.readMessageEnd();
 
@@ -787,11 +787,11 @@ UserServiceClient.prototype.recv_users = function(input,mtype,rseqid) {
   }
   return callback('users failed: unknown result');
 };
-var UserServiceProcessor = exports.Processor = function(handler) {
+var TUserServiceProcessor = exports.Processor = function(handler) {
   this._handler = handler;
 }
 ;
-UserServiceProcessor.prototype.process = function(input, output) {
+TUserServiceProcessor.prototype.process = function(input, output) {
   var r = input.readMessageBegin();
   if (this['process_' + r.fname]) {
     return this['process_' + r.fname].call(this, r.rseqid, input, output);
@@ -806,14 +806,14 @@ UserServiceProcessor.prototype.process = function(input, output) {
   }
 }
 ;
-UserServiceProcessor.prototype.process_add = function(seqid, input, output) {
-  var args = new UserService_add_args();
+TUserServiceProcessor.prototype.process_add = function(seqid, input, output) {
+  var args = new TUserService_add_args();
   args.read(input);
   input.readMessageEnd();
   if (this._handler.add.length === 1) {
-    Q.fcall(this._handler.add, args.arg0)
+    Q.fcall(this._handler.add, args.user)
       .then(function(result) {
-        var result_obj = new UserService_add_result({success: result});
+        var result_obj = new TUserService_add_result({success: result});
         output.writeMessageBegin("add", Thrift.MessageType.REPLY, seqid);
         result_obj.write(output);
         output.writeMessageEnd();
@@ -827,10 +827,10 @@ UserServiceProcessor.prototype.process_add = function(seqid, input, output) {
         output.flush();
       });
   } else {
-    this._handler.add(args.arg0, function (err, result) {
+    this._handler.add(args.user, function (err, result) {
       var result_obj;
       if ((err === null || typeof err === 'undefined')) {
-        result_obj = new UserService_add_result((err !== null || typeof err === 'undefined') ? err : {success: result});
+        result_obj = new TUserService_add_result((err !== null || typeof err === 'undefined') ? err : {success: result});
         output.writeMessageBegin("add", Thrift.MessageType.REPLY, seqid);
       } else {
         result_obj = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
@@ -842,14 +842,14 @@ UserServiceProcessor.prototype.process_add = function(seqid, input, output) {
     });
   }
 };
-UserServiceProcessor.prototype.process_get = function(seqid, input, output) {
-  var args = new UserService_get_args();
+TUserServiceProcessor.prototype.process_get = function(seqid, input, output) {
+  var args = new TUserService_get_args();
   args.read(input);
   input.readMessageEnd();
   if (this._handler.get.length === 1) {
-    Q.fcall(this._handler.get, args.arg0)
+    Q.fcall(this._handler.get, args.userId)
       .then(function(result) {
-        var result_obj = new UserService_get_result({success: result});
+        var result_obj = new TUserService_get_result({success: result});
         output.writeMessageBegin("get", Thrift.MessageType.REPLY, seqid);
         result_obj.write(output);
         output.writeMessageEnd();
@@ -863,10 +863,10 @@ UserServiceProcessor.prototype.process_get = function(seqid, input, output) {
         output.flush();
       });
   } else {
-    this._handler.get(args.arg0, function (err, result) {
+    this._handler.get(args.userId, function (err, result) {
       var result_obj;
       if ((err === null || typeof err === 'undefined')) {
-        result_obj = new UserService_get_result((err !== null || typeof err === 'undefined') ? err : {success: result});
+        result_obj = new TUserService_get_result((err !== null || typeof err === 'undefined') ? err : {success: result});
         output.writeMessageBegin("get", Thrift.MessageType.REPLY, seqid);
       } else {
         result_obj = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
@@ -878,14 +878,14 @@ UserServiceProcessor.prototype.process_get = function(seqid, input, output) {
     });
   }
 };
-UserServiceProcessor.prototype.process_remove = function(seqid, input, output) {
-  var args = new UserService_remove_args();
+TUserServiceProcessor.prototype.process_remove = function(seqid, input, output) {
+  var args = new TUserService_remove_args();
   args.read(input);
   input.readMessageEnd();
   if (this._handler.remove.length === 1) {
-    Q.fcall(this._handler.remove, args.arg0)
+    Q.fcall(this._handler.remove, args.userId)
       .then(function(result) {
-        var result_obj = new UserService_remove_result({success: result});
+        var result_obj = new TUserService_remove_result({success: result});
         output.writeMessageBegin("remove", Thrift.MessageType.REPLY, seqid);
         result_obj.write(output);
         output.writeMessageEnd();
@@ -899,10 +899,10 @@ UserServiceProcessor.prototype.process_remove = function(seqid, input, output) {
         output.flush();
       });
   } else {
-    this._handler.remove(args.arg0, function (err, result) {
+    this._handler.remove(args.userId, function (err, result) {
       var result_obj;
       if ((err === null || typeof err === 'undefined')) {
-        result_obj = new UserService_remove_result((err !== null || typeof err === 'undefined') ? err : {success: result});
+        result_obj = new TUserService_remove_result((err !== null || typeof err === 'undefined') ? err : {success: result});
         output.writeMessageBegin("remove", Thrift.MessageType.REPLY, seqid);
       } else {
         result_obj = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
@@ -914,14 +914,14 @@ UserServiceProcessor.prototype.process_remove = function(seqid, input, output) {
     });
   }
 };
-UserServiceProcessor.prototype.process_update = function(seqid, input, output) {
-  var args = new UserService_update_args();
+TUserServiceProcessor.prototype.process_update = function(seqid, input, output) {
+  var args = new TUserService_update_args();
   args.read(input);
   input.readMessageEnd();
   if (this._handler.update.length === 1) {
-    Q.fcall(this._handler.update, args.arg0)
+    Q.fcall(this._handler.update, args.user)
       .then(function(result) {
-        var result_obj = new UserService_update_result({success: result});
+        var result_obj = new TUserService_update_result({success: result});
         output.writeMessageBegin("update", Thrift.MessageType.REPLY, seqid);
         result_obj.write(output);
         output.writeMessageEnd();
@@ -935,10 +935,10 @@ UserServiceProcessor.prototype.process_update = function(seqid, input, output) {
         output.flush();
       });
   } else {
-    this._handler.update(args.arg0, function (err, result) {
+    this._handler.update(args.user, function (err, result) {
       var result_obj;
       if ((err === null || typeof err === 'undefined')) {
-        result_obj = new UserService_update_result((err !== null || typeof err === 'undefined') ? err : {success: result});
+        result_obj = new TUserService_update_result((err !== null || typeof err === 'undefined') ? err : {success: result});
         output.writeMessageBegin("update", Thrift.MessageType.REPLY, seqid);
       } else {
         result_obj = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);
@@ -950,14 +950,14 @@ UserServiceProcessor.prototype.process_update = function(seqid, input, output) {
     });
   }
 };
-UserServiceProcessor.prototype.process_users = function(seqid, input, output) {
-  var args = new UserService_users_args();
+TUserServiceProcessor.prototype.process_users = function(seqid, input, output) {
+  var args = new TUserService_users_args();
   args.read(input);
   input.readMessageEnd();
   if (this._handler.users.length === 0) {
     Q.fcall(this._handler.users)
       .then(function(result) {
-        var result_obj = new UserService_users_result({success: result});
+        var result_obj = new TUserService_users_result({success: result});
         output.writeMessageBegin("users", Thrift.MessageType.REPLY, seqid);
         result_obj.write(output);
         output.writeMessageEnd();
@@ -974,7 +974,7 @@ UserServiceProcessor.prototype.process_users = function(seqid, input, output) {
     this._handler.users(function (err, result) {
       var result_obj;
       if ((err === null || typeof err === 'undefined')) {
-        result_obj = new UserService_users_result((err !== null || typeof err === 'undefined') ? err : {success: result});
+        result_obj = new TUserService_users_result((err !== null || typeof err === 'undefined') ? err : {success: result});
         output.writeMessageBegin("users", Thrift.MessageType.REPLY, seqid);
       } else {
         result_obj = new Thrift.TApplicationException(Thrift.TApplicationExceptionType.UNKNOWN, err.message);

@@ -1,17 +1,16 @@
 import chalk from 'chalk'
 import thrift from 'thrift'
-import UserService from '../../gen-nodejs/UserService'
 
-const thriftClient = {}
+import { rpchost, rpcport } from './../../config'
 
 const transport = thrift.TFramedTransport
 const protocol = thrift.TBinaryProtocol
 
-const connection = thrift.createConnection("localhost", 5000, {
+const connection = thrift.createConnection(rpchost, rpcport, {
   transport: transport,
   protocol: protocol
 })
-// var connection = thrift.createConnection('localhost', 5000, {
+// const connection = thrift.createConnection(rpchost, rpcport, {
 //   debug: true,
 //   max_attempts: 5
 // })
@@ -19,7 +18,7 @@ const connection = thrift.createConnection("localhost", 5000, {
 const multiplexer = new thrift.Multiplexer()
 
 connection.on('error', (err) => {
-  console.log(chalk.bold.white.bgRed(`❌ Thrift - ${err}`))
+  console.log(chalk.bold.white.bgRed(`❌  Thrift - ${err}`))
 })
 
 process.on('exit', function () {
@@ -27,8 +26,7 @@ process.on('exit', function () {
   connection.end()
 })
 
-thriftClient.client = function () {
-  return multiplexer.createClient('UserService', UserService, connection)
+module.exports = {
+  multiplexer,
+  connection
 }
-
-module.exports = thriftClient

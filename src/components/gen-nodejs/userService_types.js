@@ -11,10 +11,11 @@ var Q = thrift.Q;
 
 
 var ttypes = module.exports = {};
-var User = module.exports.User = function(args) {
+var TUser = module.exports.TUser = function(args) {
   this.id = null;
   this.username = null;
   this.password = null;
+  this.enable = null;
   if (args) {
     if (args.id !== undefined && args.id !== null) {
       this.id = args.id;
@@ -25,10 +26,13 @@ var User = module.exports.User = function(args) {
     if (args.password !== undefined && args.password !== null) {
       this.password = args.password;
     }
+    if (args.enable !== undefined && args.enable !== null) {
+      this.enable = args.enable;
+    }
   }
 };
-User.prototype = {};
-User.prototype.read = function(input) {
+TUser.prototype = {};
+TUser.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -62,6 +66,13 @@ User.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
+      case 4:
+      if (ftype == Thrift.Type.I32) {
+        this.enable = input.readI32();
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -71,8 +82,8 @@ User.prototype.read = function(input) {
   return;
 };
 
-User.prototype.write = function(output) {
-  output.writeStructBegin('User');
+TUser.prototype.write = function(output) {
+  output.writeStructBegin('TUser');
   if (this.id !== null && this.id !== undefined) {
     output.writeFieldBegin('id', Thrift.Type.I32, 1);
     output.writeI32(this.id);
@@ -86,6 +97,11 @@ User.prototype.write = function(output) {
   if (this.password !== null && this.password !== undefined) {
     output.writeFieldBegin('password', Thrift.Type.STRING, 3);
     output.writeString(this.password);
+    output.writeFieldEnd();
+  }
+  if (this.enable !== null && this.enable !== undefined) {
+    output.writeFieldBegin('enable', Thrift.Type.I32, 4);
+    output.writeI32(this.enable);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

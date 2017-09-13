@@ -1,36 +1,37 @@
 import 'babel-polyfill'
 import Koa from 'koa'
-import koaBody from 'koa-body'
-import logger from 'koa-logger'
-import helmet from 'koa-helmet'
-import onerror from 'koa-onerror'
-import mongoose from 'mongoose'
-import cors from 'koa2-cors'
 import chalk from 'chalk'
+import {
+  resolve
+} from 'path'
+import R from 'ramda'
 
-import { port, mongodb } from './config'
-import routing from './routes/'
-
-mongoose.connect(mongodb,{
-  useMongoClient: true
-}, (err) => {
-  if (err) {
-    console.error(chalk.bold.white.bgRed('Could not connect to MongoDB!'))
-    console.log(chalk.bold.white.bgRed(err))
-  }
-})
+import {
+  host,
+  port
+} from './config'
+import InitData from './init/init-data'
 
 const app = new Koa()
 
-app.use(logger())
-app.use(koaBody())
-app.use(helmet())
-app.use(cors())
+const MIDDLEWARES = ['logger', 'result-formatter', 'commons', 'database', 'routes']
 
-onerror(app)
+const useMiddlewares = app => {
+  return R.map(
+    R.compose(
+      R.map(i => i(app)),
+      require,
+      i => `${resolve(__dirname, './middlewares')}/${i}`
+    )
+  )
+}
 
-routing(app)
+const start = async() => {
+  await InitData.initLogPath()
+  await useMiddlewares(app)(MIDDLEWARES)
+  app.listen(port, () => {
+    console.log(chalk.bold.white.bgBlue(`✅  NODE_ENV=${process.env.NODE_ENV} and the server is running at http://${host}:${port}/`))
+  })
+}
 
-app.listen(port, () => console.log(chalk.bold.white.bgBlue(`✅  The server is running at http://localhost:${port}/`)))
-
-export default app
+start()

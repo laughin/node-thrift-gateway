@@ -1,13 +1,13 @@
 import Router from 'koa-router'
-import { baseApi } from '../config'
+import { baseapi } from './../../../config'
 
-import ActivityController from './../data/mongo/official-site/activity/activityController'
+import ActivityController from './ActivityController'
 
 const api = 'activity'
 
 const router = new Router()
 
-router.prefix(`/${baseApi}/${api}`)
+router.prefix(`/${baseapi}/${api}`)
 
 router.post('/add', ActivityController.add)
 

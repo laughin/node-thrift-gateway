@@ -1,5 +1,5 @@
 import ttypes from '../../gen-nodejs/userService_types'
-import userClient from './userClient'
+import userClient from './UserClient'
 
 class UserService {
 
@@ -8,7 +8,7 @@ class UserService {
   }
 
   add(formBody) {
-    const user = new ttypes.User({
+    const user = new ttypes.TUser({
       username: formBody.username,
       password: formBody.password,
     })
@@ -23,7 +23,7 @@ class UserService {
 	}
 
   update(id, formBody) {
-    const user = new ttypes.User({
+    const user = new ttypes.TUser({
       id: id,
       username: formBody.username,
       password: formBody.password,

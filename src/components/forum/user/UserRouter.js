@@ -1,13 +1,13 @@
 import Router from 'koa-router'
-import { baseApi } from '../config'
+import { baseapi } from './../../../config'
 
-import UserController from './../data/thrift/bbs/user/userController'
+import UserController from './UserController'
 
 const api = 'user'
 
 const router = new Router()
 
-router.prefix(`/${baseApi}/${api}`)
+router.prefix(`/${baseapi}/${api}`)
 
 router.post('/add', UserController.add)
 

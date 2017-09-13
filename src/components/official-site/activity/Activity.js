@@ -1,5 +1,5 @@
-var mongoose = require('mongoose')
-var Schema = mongoose.Schema
+import mongoose from 'mongoose'
+const { Schema } = mongoose
 
 /**
  * 活动
@@ -9,7 +9,7 @@ var Schema = mongoose.Schema
  * address: 地点
  * sponsor: 主办方
  */
-var ActivitySchema = new Schema({
+const ActivitySchema = new Schema({
   title: {
     type: String,
     default: '',
